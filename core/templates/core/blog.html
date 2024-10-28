@@ -6,7 +6,11 @@
 
 {% block content %}
     <div class="container mt-4">
-        <h1>Blog Posts</h1>
+        <h1>Explore Our Blog Posts</h1>
+        <a href="{% url 'add_blogs' %}" class="btn btn-success mb-3" style="font-weight: bold; font-size: 1.1rem; background-color: #28a745; border-color: #28a745; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+            Share Your Adventure ✍️
+        </a>
+
         <ul class="list-group">
             {% for b in blogs %}
                 <li class="list-group-item">
