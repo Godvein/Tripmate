@@ -5,9 +5,64 @@
 {% endblock %}
 
 {% block content %}
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .btn-success {
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            background-color: #28a745;
+            border-color: #28a745;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+        .list-group-item {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .list-group-item a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .list-group-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
     <div class="container mt-4">
         <h1>Explore Our Blog Posts</h1>
-        <a href="{% url 'add_blogs' %}" class="btn btn-success mb-3" style="font-weight: bold; font-size: 1.1rem; background-color: #28a745; border-color: #28a745; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <a href="{% url 'add_blogs' %}" class="btn btn-success">
             Share Your Adventure ✍️
         </a>
 

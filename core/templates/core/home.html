@@ -1,0 +1,81 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<div class="home-container">
+    <div class="content">
+        <h1>Welcome to Hikees</h1>
+        <p>Discover, Rank, and Share Your Favorite Hiking Spots</p>
+        
+        <!-- Display images of people traveling -->
+        <div class="image-display">
+            <img src="{% static 'core/images/raushal_climb.jpg'%}" alt="People hiking" class="display-image">
+            <img src="{% static 'core/images/sujal_travel.jpg'%}" alt="Mountain view" class="display-image">
+        </div>
+
+        <div class="buttons">
+            <a href="{% url 'add_blogs'%}" class="btn">Share a Spot</a>
+            <a href="{% url 'blogs'%}" class="btn">Explore Trails</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    
+    .home-container {
+        background-color: #4CAF50;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+    }
+
+    .content {
+        max-width: 700px;
+        text-align: center;
+    }
+
+    .content h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+    }
+
+    .content p {
+        font-size: 1.5em;
+        margin-bottom: 40px;
+    }
+
+    /* Image display section */
+    .image-display {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .display-image {
+        width: 45%; 
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .buttons .btn {
+        padding: 10px 20px;
+        margin: 10px;
+        background-color: #333;
+        color: white;
+        text-decoration: none;
+        font-size: 1em;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .buttons .btn:hover {
+        background-color: #555;
+    }
+</style>
+{% endblock %}

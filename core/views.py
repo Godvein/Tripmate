@@ -16,4 +16,7 @@ def addBlogs(request):
         blog.save()
         return redirect("blogs")
     return render(request, "core/addblog.html")
+
+def home(request):
+    return render(request, "core/home.html")
     
