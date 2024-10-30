@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.contrib.auth import login as auth_login, logout as auth_logout, authenticate
+from django.contrib.auth.decorators import login_required
+from .models import Profile
+from django.core.files.storage import FileSystemStorage
 
 def validate_password_strength(password):
     if len(password) < 8:
@@ -73,3 +76,26 @@ def login(request):
 def logout(request):
     auth_logout(request)
     return redirect("home")
+
+@login_required
+def selfprofileview(request):
+    profile = Profile.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        # Handle the profile picture upload
+        if request.FILES.get('profile_pic'):
+            profile_pic = request.FILES['profile_pic']
+            profile.profile_pic = profile_pic
+            profile.profile_pic_url = upload_to_mega(profile_pic.path)  # Update the URL after upload
+            profile.save()
+            # Optionally delete the local file if needed
+            profile_pic.delete(save=False)
+
+        # You can add more fields to update if needed
+
+        return redirect('profile')  # Redirect to profile view after saving
+
+    context = {
+        'profile': profile,
+    }
+    return render(request, 'user/profile.html', context)

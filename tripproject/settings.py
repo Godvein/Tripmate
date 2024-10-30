@@ -125,6 +125,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  
+]
+
 
 
 
@@ -132,3 +136,17 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import environ
+
+# Initialize environment variables
+env = environ.Env()
+environ.Env.read_env()  
+
+MEGA_EMAIL = env('MEGA_EMAIL')
+MEGA_PASSWORD = env('MEGA_PASSWORD')
+
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
